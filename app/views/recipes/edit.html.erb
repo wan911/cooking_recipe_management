@@ -1,0 +1,113 @@
+<div class="contents">  
+  <div class="upper-content">
+    <div class="recipe-title">
+      <%= form_with(model: @recipe, local: true) do |f| %>
+        <%= f.text_field :title, placeholder: "料理名を入力してください" %>
+        <%= f.submit "更新", class: "btn btn-orange" %>
+      <% end %>
+    </div>
+    <div class="categories">
+      <div class="category">
+        <%= icon "fas", "tags", class: "category__tag" %>
+        <div class="category__name">
+          <%= @recipe.menu1_category %>
+        </div>
+      </div>
+      <% if @recipe.menu2_category.present? %>
+        <div class="category">
+          <%= icon "fas", "tags", class: "category__tag" %>
+          <div class="category__name">
+            <%= @recipe.menu2_category %>
+          </div>
+        </div>
+      <% end %>
+      <div class="category">
+        <%= icon "fas", "tags", class: "category__tag" %>
+        <div class="category__name">
+          <%= @recipe.cuisine_category %>
+        </div>
+      </div>
+      <% @recipe.category_frees.each do |category| %>
+        <div class="category">
+          <%= icon "fas", "user-tag", class: "category__tag" %>
+          <div class="category__name">
+            <%= category.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="middle-content">
+    <div class="recipe-image">
+    <% if @recipe.image.present? %>
+      <%= image_tag @recipe.image.url %>
+    <% else %>
+      <div class="recipe-image--null">
+        <%= icon "fas", "pizza-slice", class: "recipe-image__icon" %>
+        <p>画像はないよ</p>  
+      </div>
+    <% end %>
+    </div>
+
+    <div class="recipe-ingredients">
+      <h3>材料</h3>
+      <%= form_with(model: @recipe, local: true) do |f| %>
+        <%= f.text_field :serving, placeholder: "例) 3人前" %>
+        <%= f.submit "更新", class: "btn btn-orange" %>
+      <% end %>
+      <% @recipe.ingredient_amounts.each do |ingredient| %>
+        <div class="recipe-ingredient">
+          <div class="recipe-ingredient__name"><%= ingredient.ingredient.ingredient %></div>
+          <div class="recipe-ingredient--right">
+            <div class="recipe-ingredient--right__amount"><%= ingredient.amount.amount %></div>
+            <div class="recipe-ingredient--right__icon">
+              <%= link_to recipe_ingredient_amount_path(@recipe, ingredient), method: :delete, class: "recipe-ingredient__icon--delete" do %>
+                <%= icon "fas", "trash-alt" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="recipe-right">
+      <%= render "ingredients/new" %>
+      <div class="recipe-right__image">
+        <%= form_with(model: @recipe, local: true) do |f| %>
+          <%= f.file_field :image %>
+          <div class="button">
+            <%= f.submit "更新", class: "btn btn-orange" %>
+          </div>
+        <% end %>
+      </div>
+      <%= render "recipe_urls/new" %>
+    </div>
+  </div>
+
+  <div class="content">
+    <%= form_with(model: @recipe, local: true) do |f| %>
+      <%= f.label "手順を記入する" %>
+      <div class="content__text">
+        <%= f.text_area :content, placeholder: "手順", id: "textarea", class: "form-control" %>
+      </div>
+      <div class="button">
+        <%= f.submit "保存する", class: "btn btn-orange" %>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @recipe.recipe_urls.exists? %>
+    <div class="recipe_urls">
+      <p>参照URL</p>
+      <% @recipe.recipe_urls.each do |recipe_url| %>
+        <div class="recipe_url">
+          <%= link_to "/recipes/#{recipe_url.recipe_id}/recipe_urls/#{recipe_url.id}", method: :delete, class: "recipe_url__icon" do %>
+            <%= icon "fas", "trash-alt" %>
+          <% end %>
+          <%= link_to "#{recipe_url.recipe_url}", "#{recipe_url.recipe_url}", class: "recipe_url__link" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

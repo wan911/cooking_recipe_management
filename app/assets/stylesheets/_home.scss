@@ -1,0 +1,80 @@
+*{
+  font-family: "Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体";
+}
+
+.wrapper{
+  height: calc(100vh - 56px);
+  background-color: white;
+  overflow: scroll;
+  padding: 30px 50px 20px;
+  .contents{
+    padding: 0 100px;;
+    margin: 0 auto;
+    height: calc(100vh - 56px);
+    width: calc(100vw - 130px);
+  }
+}
+
+.flash {
+  text-align: center;
+}
+
+// カテゴリー一覧
+.dropdown-item {
+  font-size: 13px;
+}
+
+.recipes{
+  .recipe{
+    padding: 30px 19px;
+    float: left;
+    &__card-category {
+      display: flex;
+      &--text {
+        font-size: 14px;
+        padding-right: 5px;
+        color: white;
+      }
+    }
+    &__links {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+  }
+}
+
+.card {
+  width: 290px;
+  height: 190px;
+}
+
+.card-title {
+  font-weight: bold;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white; 
+  color: white;
+}
+
+.filter {
+  background-color: #000;
+  border-radius: 0.25rem;
+  &:hover {
+    background-color: transparent;
+    transition-duration: 0.3s;
+  }
+}
+
+.card-img-top {
+  width: 290px;
+  height: 190px;
+  object-fit: cover;
+  opacity: 0.6;
+  &:hover {
+    transition-duration: 0.3s;
+    opacity: 1;
+  }
+}
+
+
+

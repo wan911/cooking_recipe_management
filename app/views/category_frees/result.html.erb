@@ -1,0 +1,12 @@
+<div class="recipe-new__btn" >
+  <%= link_to "検索ページに戻る",search_category_frees_path ,class: "btn btn-orange" %>
+</div>
+<div class="recipes">
+  <% if @result.present? %>
+    <% @result.each do |result| %>
+      <%= render partial: 'recipes/recipe_cards', locals: { recipe: result.recipe } %>
+    <% end %>
+  <% else %>
+    <h5>検索結果が見つかりませんでした</h5>
+  <% end %>
+</div>

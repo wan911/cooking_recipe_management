@@ -1,0 +1,38 @@
+<!-- モダール用ボタン -->
+<div class="button">
+  <button type="button" class="btn btn btn-orange" data-toggle="modal" data-target="#exampleModal">材料を入力する</button>
+</div>
+<!-- ボタンここまで -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">材料を入力してください</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="form-ingredient">
+        <%= form_for @ingredient, url: recipe_ingredient_amounts_path(@recipe), id: "new_ingredient" do |f| %>
+          <div class="form-ingredient__name">
+            <%= f.label "材料" %>
+            <%= f.text_field :ingredient, placeholder: "材料・調味料名" %>
+          </div>
+          <%= fields_for :amount, @amount do |a| %>
+            <div class="form-ingredient__amount">
+              <%= a.label "分量" %>
+              <%= a.text_field :amount, placeholder: "分量" %>
+            </div>
+          <% end %>
+          
+          <div class="modal-footer">
+            <div class="button">
+              <%= f.submit "追加する", class: "btn btn-orange" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

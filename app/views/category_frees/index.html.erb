@@ -1,0 +1,13 @@
+<h3>固定カテゴリ一覧</h3>
+<% @menu_categories.each do |menu_category| %>
+  <%= link_to "#{menu_category[0]}", menu_category_category_free_path(menu_category[1]) %>
+<% end %>
+<span>/</span>
+<% @cuisine_categories.each do |cuisine_category| %>
+  <%= link_to "#{cuisine_category[0]}", cuisine_category_category_free_path(cuisine_category[1]) %>
+<% end %>
+
+<h3>フリーカテゴリ一覧</h3>
+<% @all_categories.each do |category| %>
+  <%= link_to "#{category.name}", category_free_path(category) %>
+<% end %>

@@ -1,0 +1,9 @@
+<div class="recipe-right__url">
+  <%= form_with(model: @recipe_url, url: recipe_recipe_urls_path(@recipe), local: true) do |f| %>
+    <%= f.label :recipe_url, "参照url" %>
+    <%= f.text_field :recipe_url, class: "form-control" %>
+    <div class="button">
+      <%= f.submit "保存", class: "btn btn-orange" %>
+    </div>
+  <% end %>
+</div>

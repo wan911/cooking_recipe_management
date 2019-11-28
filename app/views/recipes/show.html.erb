@@ -1,0 +1,100 @@
+<div class="contents">
+  <div class="upper-content">
+    <div class="recipe-title">
+      <h1><%= @recipe.title %></h1>
+    </div>
+    <div class="categories">
+      <div class="category">
+        <%= icon "fas", "tags", class: "category__tag" %>
+        <div class="category__name">
+          <%= @recipe.menu1_category %>
+        </div>
+      </div>
+      <% if @recipe.menu2_category.present? %>
+        <div class="category">
+          <%= icon "fas", "tags", class: "category__tag" %>
+          <div class="category__name">
+            <%= @recipe.menu2_category %>
+          </div>
+        </div>
+      <% end %>
+      <div class="category">
+        <%= icon "fas", "tags", class: "category__tag" %>
+        <div class="category__name">
+          <%= @recipe.cuisine_category %>
+        </div>
+      </div>
+      <% @recipe.category_frees.each do |category| %>
+        <div class="category">
+          <%= icon "fas", "user-tag", class: "category__tag" %>
+          <div class="category__name">
+            <%= category.name %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="middle-content">
+    <div class="recipe-image">
+    <% if @recipe.image.present? %>
+      <%= image_tag @recipe.image.url %>
+    <% else %>
+      <div class="recipe-image--null">
+        <%= icon "fas", "pizza-slice", class: "recipe-image__icon" %>
+        <p>画像はないよ</p>  
+      </div>
+    
+    <% end %>
+    </div>
+
+    <% if @recipe.ingredient_amounts.present? %>
+      <div class="recipe-ingredients">
+        <h3>材料</h3>
+        <% if @recipe.serving.present? %>
+          <p>
+            (<%= @recipe.serving %>)
+          </p>
+        <% end %>
+        <% @recipe.ingredient_amounts.each do |ingredient| %>
+          <div class="recipe-ingredient">
+            <div class="recipe-ingredient__name"><%= ingredient.ingredient.ingredient %></div>
+            <div class="recipe-ingredient--right">
+              <div class="recipe-ingredient--right__amount"><%= ingredient.amount.amount %></div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="recipe-right">
+      <div class="dropdown menu-btn">
+        <button type="button" class="btn btn-orange dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          メニュー
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <%= link_to "編集", edit_recipe_path(@recipe), class: "dropdown-item" %>
+          <%= link_to "削除", recipe_path(@recipe), method: :delete, class: "dropdown-item delete-racipe", data:{confirm: "削除します。よろしいですか？"} %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% if @recipe.content.present? %>
+    <div class="content">
+      <h1 class="content__title">作り方</h1>
+        <%= simple_format(@recipe.content) %>
+    </div>
+  <% end %>
+
+  <% if @recipe.recipe_urls.present? %>
+    <div class="recipe_urls">
+        <p>参照URL</p>
+      <% @recipe.recipe_urls.each do |recipe_url| %>
+        <div class="recipe_url">
+          <%= link_to "#{recipe_url.recipe_url}", "#{recipe_url.recipe_url}", class: "recipe_url__link" %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

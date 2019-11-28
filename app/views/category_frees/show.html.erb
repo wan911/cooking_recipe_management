@@ -1,0 +1,6 @@
+<div class="recipes">
+  <h3>「<%= @category_name.name %>」カテゴリーの一覧</h3>
+  <% @category.each do |category| %>
+    <%= render partial: 'recipes/recipe_cards', locals: { recipe: category.recipe } %>
+  <% end %>
+</div>

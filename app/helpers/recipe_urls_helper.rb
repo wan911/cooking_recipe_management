@@ -1,0 +1,2 @@
+module RecipeUrlsHelper
+end

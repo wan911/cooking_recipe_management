@@ -1,0 +1,30 @@
+<div class="recipe">
+  <%= link_to recipe_path(recipe) do %> 
+    <div class="card shadow" style="width: 18rem;">
+      <% if recipe.image.present? %>
+      <p class="filter">    
+        <%= image_tag "#{recipe.image.url}", class: "card-img-top" %>
+      </p>
+      <% else %>
+        <svg class="bd-placeholder-img card-img-top" width="100%" height="180" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Image cap"><title>Placeholder</title><rect width="100%" height="100%" fill="#868e96"/></svg>
+      <% end %>
+      <div class="card-img-overlay">
+        <h5 class="card-title "><%= recipe.title %></h5>
+        
+        <div class="recipe__card-category">
+          <p class="card-text recipe__card-category--text"><%= recipe.menu1_category %></p>
+
+          <% if recipe.menu2_category.present?%>
+            <p class="card-text recipe__card-category--text"><%= recipe.menu2_category %></p>
+          <% end %>
+          
+          <p class="card-text recipe__card-category--text"><%= recipe.cuisine_category %></p>
+          
+        <% recipe.category_frees.each do |category| %>
+          <p class="card-text recipe__card-category--text"><%= category.name %></p> 
+        <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>レシピ管理アプリ</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <nav class="navbar navbar-expand-lg navbar-light sticky-top bg-cream">
+    <%= link_to "MyCook", root_path, class: "navbar-brand text-green font-weight-bold" %>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <% if user_signed_in? %>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <%= link_to "レシピを書く", new_recipe_path, class: "nav-link text-green" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "何作る？", random_category_frees_path, class: "nav-link text-green" %>
+          </li>
+
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-green" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              カテゴリー
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% @all_categories.each do |category| %>
+                <%= link_to "#{category.name}", category_free_path(category), class: "dropdown-item text-green"  %>
+              <% end  %>
+              <div class="dropdown-divider"></div>
+                  <%= link_to "カテゴリ一覧", category_frees_path, class: "dropdown-item text-green" %>
+                  <%= link_to "カテゴリ検索", search_category_frees_path, class: "dropdown-item text-green" %>
+            </div>
+          </li> 
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle text-green" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_user.name %>でログイン中
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item text-green" %>
+            </div>
+          </li> 
+        </ul>
+        <%= search_form_for @q, url: search_recipes_path, class: "form-inline my-2 my-lg-0" do |f| %>
+          <%= f.search_field :title_cont, class: "form-control mr-sm-2", type: "search", placeholder: "タイトル検索", "aria-label": "Search" %>
+          <%= f.submit "Search", class: "btn btn-outline-success my-2 my-sm-0", type: "submit" %>
+        <% end %>
+      </div>
+    <% end %>
+  </nav>
+    <div class="flash alert-success">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
+    </div>
+    <div class="flash alert-danger">
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+    </div>
+    <div class="wrapper">
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+$theme-colors: (
+  "cream" : #feeabe,
+  "orange": #fac458,
+  "pink"  : #f5b5af,
+  "green" : #4d7254
+);
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "home";
+@import "recipe";
+@import "random";
+@import "reset";
+@import "bootstrap";

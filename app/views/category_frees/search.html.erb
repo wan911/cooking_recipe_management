@@ -1,0 +1,17 @@
+<div class="recipe-new">
+  <%= form_with(model: @recipe, url: result_category_frees_path, local: true) do |f| %>
+    <h5 class="recipe-new__category">検索したいカテゴリーを選んでください</h5>
+    <%= f.label "メニューカテゴリ" %>
+    <%= f.select :menu1_category, Recipe.menu1_categories.keys,{prompt: "--"}, class: "recipe-new__category__select form-control" %>
+  
+    <%= f.label "料理ジャンル" %>
+    <%= f.select :cuisine_category, Recipe.cuisine_categories.keys,{prompt: "--"}, class: "recipe-new__category__select form-control" %>
+ 
+    <%= f.label "フリーカテゴリ" %>
+    <%= f.select :name, @all_categories.pluck(:name), include_blank: true, class: "recipe-new__category__select form-control" %>
+
+    <div class="recipe-new__btn" >
+      <%= f.submit "検索する" ,class: "btn btn-orange" %>
+    </div>
+  <% end %>
+</div>
