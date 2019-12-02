@@ -41,7 +41,6 @@ class RecipesController < ApplicationController
   end
 
   def update
-    binding.pry
     if @recipe.update(recipe_params)
       flash[:notice] = "更新しました"
       redirect_to edit_recipe_path(@recipe)
