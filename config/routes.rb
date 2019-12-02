@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'recipes#index'
+  root 'top#index'
   resources :category_frees, only: [:index, :show] do
     resource :recipe_categories, only: :destroy
     member do

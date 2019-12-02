@@ -1,0 +1,26 @@
+.jumbotron-extend {
+  height: 80vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+  display: none;
+  :before {
+    content: '';
+    background: url("isorepublic-paella-dish-1.jpg");
+    background-size: cover;
+    position: absolute;
+    top: -5px;
+    bottom: -5px;
+    left: -5px;
+    right: -5px;
+    filter: blur(2px);
+    z-index: -1;
+  }
+  .top-title {
+    text-shadow: #808080 1px 0 10px;
+    &__text {
+      text-shadow: #808080 1px 0 10px;
+    }
+  }
+}
+
