@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="jumbotron mt-4 jumbotron-extend">
+    <h1 class="display-4 top-title">料理レシピ管理サイト</h1>
+    <p class="lead top-title__text">自分で作ったレシピ、気に入ったレシピを管理しよう</p>
+    <hr class="my-4">
+    <%= link_to "ログイン", new_user_session_path, class: "btn btn-green btn-lg", role: "button" %>
+    <%= link_to "新規登録", new_user_registration_path, class: "btn btn-green btn-lg", role: "button" %>
+  </div>
+  <script>
+  $('.jumbotron-extend').css('top', '-40px')
+  $('.jumbotron-extend').fadeIn(1500).animate({top: "0px"},{duration: 1500, queue: false});
+  </script>
+</div>
