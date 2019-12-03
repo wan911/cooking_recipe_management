@@ -1,6 +1,8 @@
 https://app-cook-memo.herokuapp.com/
 
 # レシピ管理アプリ
+![image](https://user-images.githubusercontent.com/55653128/70046883-41582080-160a-11ea-952e-a8565f155242.png)
+
 ## できること
 ### レシピの管理
 - 自分で考えたレシピを管理することができます
