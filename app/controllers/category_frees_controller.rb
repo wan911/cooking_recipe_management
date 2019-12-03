@@ -23,8 +23,7 @@ class CategoryFreesController < ApplicationController
   end
 
   def random
-    rand = Rails.env.production? ? "RANDOM()" : "rand()"
-    @result = @result.order(Arel.sql(rand)).first
+    @result   = @result.shuffle.first
   end
 
   def search
