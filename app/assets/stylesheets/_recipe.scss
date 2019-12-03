@@ -44,17 +44,6 @@
 .recipe-image{
   margin: 20px 0;
   float: left;
-  &--null {
-  height: 300px;
-  width:  300px;
-  border: 1px solid #b0c4de;
-  text-align: center;
-  }
-  &__icon {
-  font-size: 100px;
-  padding: 80px 0 20px;
-  }
-
 }
 
 .recipe-ingredients{

@@ -37,15 +37,7 @@
 
   <div class="middle-content">
     <div class="recipe-image">
-    <% if @recipe.image.present? %>
       <%= image_tag @recipe.image.url %>
-    <% else %>
-      <div class="recipe-image--null">
-        <%= icon "fas", "pizza-slice", class: "recipe-image__icon" %>
-        <p>画像はないよ</p>  
-      </div>
-    
-    <% end %>
     </div>
 
     <% if @recipe.ingredient_amounts.present? %>
