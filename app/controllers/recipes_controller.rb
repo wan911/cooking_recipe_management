@@ -45,8 +45,8 @@ class RecipesController < ApplicationController
       flash[:notice] = "更新しました"
       redirect_to edit_recipe_path(@recipe)
     else
-      flash.now[:alert] = "中身がありません"
-      render :edit
+      flash[:alert] = "タイトルがありません"
+      redirect_to edit_recipe_path(@recipe)
     end
   end
 
@@ -59,7 +59,7 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :image, :content, :menu1_category, :menu2_category, :cuisine_category, :serving ).merge(user_id: current_user.id)
+    params.fetch(:recipe, {}).permit(:title, :image, :content, :menu1_category, :menu2_category, :cuisine_category, :serving ).merge(user_id: current_user.id)
   end
 
   def category_free_params

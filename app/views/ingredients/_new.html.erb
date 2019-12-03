@@ -14,7 +14,7 @@
         </button>
       </div>
       <div class="form-ingredient">
-        <%= form_for @ingredient, url: recipe_ingredient_amounts_path(@recipe), id: "new_ingredient" do |f| %>
+        <%= form_with(model: @ingredient, url: recipe_ingredient_amounts_path(@recipe), id: "new_ingredient", local: true) do |f| %>
           <div class="form-ingredient__name">
             <%= f.label "材料" %>
             <%= f.text_field :ingredient, placeholder: "材料・調味料名" %>
