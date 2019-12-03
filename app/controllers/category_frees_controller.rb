@@ -23,7 +23,7 @@ class CategoryFreesController < ApplicationController
   end
 
   def random
-    @result = @result.order("RAND()").first
+    @result = @result.order(Arel.sql("RAND()")).first
   end
 
   def search
