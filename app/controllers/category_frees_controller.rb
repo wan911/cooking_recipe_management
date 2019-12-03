@@ -8,7 +8,7 @@ class CategoryFreesController < ApplicationController
   
   def show
     # フリータグの一覧
-    @category         = RecipeCategory.where(category_free_id: params[:id])
+    @category         = RecipeCategory.where(category_free_id: params[:id]).where(recipe_id: @recipes.ids)
     @category_name    = CategoryFree.find(params[:id])
   end
   
@@ -39,11 +39,11 @@ class CategoryFreesController < ApplicationController
   end
 
   def search_criteria
-    recipes_result  = @recipes
+    recipes_result  = nil
     # メニューカテゴリを検索
-    recipes_result  = recipes_result.where(menu1_category: search_params[:menu1_category]).or(recipes_result.where(menu2_category: search_params[:menu1_category])) if search_params[:menu1_category].present?
+    recipes_result  = @recipes.where(menu1_category: search_params[:menu1_category]).or(recipes.where(menu2_category: search_params[:menu1_category])) if search_params[:menu1_category].present?
     # 料理ジャンルカテゴリを検索
-    recipes_result  = recipes_result.where(cuisine_category: search_params[:cuisine_category]) if search_params[:cuisine_category].present?
+    recipes_result  = @recipes.where(cuisine_category: search_params[:cuisine_category]) if search_params[:cuisine_category].present?
     # フリーカテゴリを検索
     category_result = CategoryFree.where(name: search_params[:name]) if search_params[:name].present?
     if category_result.present? && recipes_result.present?
@@ -51,7 +51,7 @@ class CategoryFreesController < ApplicationController
     elsif category_result.nil?
       @result       = RecipeCategory.where(recipe_id: recipes_result).select(:recipe_id).distinct
     else
-      @result       = RecipeCategory.where(category_free_id: category_result)
+      @result       = RecipeCategory.where(category_free_id: category_result).where(recipe_id: @recipes.ids)
     end
   end
 end
