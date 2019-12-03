@@ -41,7 +41,7 @@ class CategoryFreesController < ApplicationController
   def search_criteria
     recipes_result  = nil
     # メニューカテゴリを検索
-    recipes_result  = @recipes.where(menu1_category: search_params[:menu1_category]).or(recipes.where(menu2_category: search_params[:menu1_category])) if search_params[:menu1_category].present?
+    recipes_result  = @recipes.where(menu1_category: search_params[:menu1_category]).or(@recipes.where(menu2_category: search_params[:menu1_category])) if search_params[:menu1_category].present?
     # 料理ジャンルカテゴリを検索
     recipes_result  = @recipes.where(cuisine_category: search_params[:cuisine_category]) if search_params[:cuisine_category].present?
     # フリーカテゴリを検索
