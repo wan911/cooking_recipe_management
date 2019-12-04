@@ -1,7 +1,7 @@
 https://app-cook-memo.herokuapp.com/
 
 # レシピ管理アプリ
-![image](https://user-images.githubusercontent.com/55653128/70107082-e1548f00-1688-11ea-899b-57ff0995dbc8.png)
+![image](https://user-images.githubusercontent.com/55653128/70110338-f386fb00-1691-11ea-9c8d-b8bd114d4101.png)
 ![image](https://user-images.githubusercontent.com/55653128/70107530-1c0af700-168a-11ea-9b38-07494209f14f.png)
 
 ## 制作理由
