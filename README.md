@@ -15,14 +15,18 @@ https://app-cook-memo.herokuapp.com/
 ## できること
 ### レシピの管理
 - レシピを記入し管理することができます
+
 編集ページ
 ![image](https://user-images.githubusercontent.com/55653128/70107568-3644d500-168a-11ea-89c3-9a7d425082a1.png)
+
 
 閲覧ページ
 ![image](https://user-images.githubusercontent.com/55653128/70107696-9a679900-168a-11ea-9abd-547f0e549582.png)
 
+
 - urlだけでも管理することができるので、インターネットで見つけたレシピを管理することもできます。
 ![image](https://user-images.githubusercontent.com/55653128/70107671-83c14200-168a-11ea-845a-1305563390b7.png)
+
 
 ### レシピ検索
 - ヘッダー右にある検索機能で登録したレシピをあいまい検索できます。
@@ -36,7 +40,9 @@ https://app-cook-memo.herokuapp.com/
 - 献立に迷ったときにランダムでレシピを選んでくれる機能です。
 - 今の気分のカテゴリーを選択して検索したレシピの中から１つだけレシピが表示します。
 - レシピの登録数が少ないとあまり機能しないため、レシピの作成では名前だけの登録も可能にしています。
+
 ![image](https://user-images.githubusercontent.com/55653128/70107815-f16d6e00-168a-11ea-995d-2a5c667a1f63.png)
+
 
 ### 今後の実装
 - レシピ作成後カテゴリーの変更・削除が行えないため、編集できるようにする
