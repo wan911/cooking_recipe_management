@@ -2,6 +2,9 @@
   <div class="upper-content">
     <div class="recipe-title">
       <h1><%= @recipe.title %></h1>
+      <div id="like-link-<%= @recipe.id %>">
+        <%= render partial: 'likes/like' %>
+      </div>
     </div>
     <div class="categories">
       <div class="category">
