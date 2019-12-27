@@ -20,10 +20,15 @@
           
           <p class="card-text recipe__card-category--text"><%= recipe.cuisine_category %></p>
           
-        <% recipe.category_frees.each do |category| %>
-          <p class="card-text recipe__card-category--text"><%= category.name %></p> 
-        <% end %>
+          <% recipe.category_frees.each do |category| %>
+            <p class="card-text recipe__card-category--text"><%= category.name %></p> 
+          <% end %>
         </div>
+        <% if recipe.like.present? %>
+          <div class="recipe__like">
+            <%= icon "fas", "heart" %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>
