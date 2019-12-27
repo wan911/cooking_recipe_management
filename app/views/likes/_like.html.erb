@@ -1,0 +1,7 @@
+<% if @recipe.like.nil? %>
+  <%= icon "far", "heart", class: "unlike-icon" %>
+  <%= link_to "お気に入りに追加", recipe_like_path(@recipe), method: :post, remote: true, class: "like-btn" %>
+<% else %>
+  <%= icon "fas", "heart", class: "like-icon" %>
+  <%= link_to "お気に入りから外す", recipe_like_path(@recipe), method: :delete, remote: true, class: "unlike-btn" %>
+<% end %>

@@ -46,8 +46,17 @@ https://app-cook-memo.herokuapp.com/
 
 ![image](https://user-images.githubusercontent.com/55653128/70107815-f16d6e00-168a-11ea-995d-2a5c667a1f63.png)
 
+### お気に入り機能
+- 気に入ったレシピの目印となるようにお気に入り機能をつけました。
+- レシピの詳細画面からお気に入りに追加を押すとお気に入りに追加し、もう一度押すとお気に入りから外れます。
+
+![image](https://user-images.githubusercontent.com/55653128/71513791-33cb4900-28df-11ea-9e38-ed7beea81164.png)
+
+- お気に入りに入れたレシピはレシピ一覧にハートマークがつきます。
+
+![image](https://user-images.githubusercontent.com/55653128/71513806-42b1fb80-28df-11ea-9c06-b7890ba80583.png)
 
 ### 今後の実装
 - レシピ作成後カテゴリーの変更・削除が行えないため、編集できるようにする
 - 材料入力で一度にたくさんの登録ができる
-- お気に入り機能をつける
+- お気に入りに追加したレシピを絞り込みして検索できるようにする

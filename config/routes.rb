@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     end
   end
   resources :recipes do
+    resource :like, only: [:create, :destroy]
     collection do
       get "search"
     end

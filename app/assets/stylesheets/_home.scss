@@ -28,6 +28,7 @@
   .recipe{
     padding: 30px 19px;
     float: left;
+    position: relative;
     &__card-category {
       display: flex;
       &--text {
@@ -40,6 +41,13 @@
       position: absolute;
       right: 20px;
       bottom: 20px;
+    }
+    &__like {
+      color: red;
+      font-size: 20px;
+      right: 20px;
+      bottom: 15px;
+      position: absolute;
     }
   }
 }
