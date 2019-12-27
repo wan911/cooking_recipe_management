@@ -9,6 +9,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many   :recipe_urls,        dependent: :destroy
   has_many   :ingredient_amounts, dependent: :destroy
+  has_one    :like
 
   enum menu1_category: {
     "主食":1,"主菜":2,"副菜":3,"汁物":4,"デザート":5
